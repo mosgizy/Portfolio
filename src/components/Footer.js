@@ -12,9 +12,9 @@ const Footer = () => {
             <div className="footer_content">
                 <h3>back to top</h3>
                 <ul>
-                    <li><a href=""><FontAwesomeIcon icon={faTwitter} /></a></li>
+                    <li><a href="https://twitter.com/asterisk_me"><FontAwesomeIcon icon={faTwitter} /></a></li>
                     <li><a href="https://github.com/mosgizy"><FontAwesomeIcon icon={faGithub} /></a></li>
-                    <li><a href=""><FontAwesomeIcon icon={faLinkedin} /></a></li>
+                    <li><a href="https://linkedin.com/in/moshood-ope-3333a590"><FontAwesomeIcon icon={faLinkedin} /></a></li>
                 </ul>
             </div>
             <div className="copyright">

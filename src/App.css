@@ -200,6 +200,10 @@ p,h1,h2,h3,h4{
     color:var(--navlink-color)
 }
 
+.nav-color{
+    color:var(--navlink-color)
+}
+
 @media only screen and (min-width: 768px){
     .main-nav{
         justify-content:unset;
@@ -516,7 +520,7 @@ p,h1,h2,h3,h4{
 
 .skills{
     display: grid;
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
     gap:var(--big-gap);
     margin-block-start: 4rem;
 }
@@ -524,7 +528,7 @@ p,h1,h2,h3,h4{
 .skills li{
     background-color:var(--card-color);
     border-radius: 50%;
-    padding:2rem;
+    padding:.5rem;
     box-shadow: 0 0 18px rgba(0, 0, 0, .3);
 }
 

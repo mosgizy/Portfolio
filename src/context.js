@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect, useContext } from 'react'
+import React, { useReducer, useEffect, useContext } from 'react'
 
 const AppContext = React.createContext();
 const url = "https://my-json-server.typicode.com/mosgizy/Portfolio-Api/db"
@@ -20,17 +20,13 @@ const defaultValue = {
     avatar: {},
 }
 
-const Context = ({ children }) => {
-    const [projects, setProjects] = useState({})
+const Context = React.memo(({ children }) => {
     const [data, dispatch] = useReducer(reducer,defaultValue );
 
     const getProjects = async () => {
         const data = await fetch(url);
         const response = await data.json();
-        // setProjects({...projects,...response});
         dispatch({type:"SET",payload:{...response}})
-        // console.log(response)
-        // return response;
     }
     
     useEffect(() => {
@@ -42,7 +38,7 @@ const Context = ({ children }) => {
             {children}
         </AppContext.Provider>
     )
-}
+})
 
 export const useGlobalContext = () => useContext(AppContext)
 

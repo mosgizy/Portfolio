@@ -1,9 +1,8 @@
-import React,{useState,useEffect,useCallback} from 'react'
+import React,{useState,useEffect} from 'react'
 import { useGlobalContext } from '../context'
 
 const Project = () => {
     const { projects } = useGlobalContext()
-    console.log(projects)
     const [project, setProject] = useState([])
 
     const handleClick = (tech) => {

@@ -11,9 +11,9 @@ const Hero = () => {
             <article className="hero_wrapper">
                 <article className='hero_info'>
                     <div className="hero_social-icons">
-                        <FontAwesomeIcon icon={faTwitter} className='icon hero_icon' />
-                        <FontAwesomeIcon icon={faGithub} className='icon hero_icon' />
-                        <FontAwesomeIcon icon={faLinkedin} className='icon hero_icon' />
+                        <a href="https://twitter.com/asterisk_me"><FontAwesomeIcon icon={faTwitter} className='icon hero_icon' /></a>
+                        <a href="https://github.com/mosgizy"><FontAwesomeIcon icon={faGithub} className='icon hero_icon' /></a>
+                        <a href="https://linkedin.com/in/moshood-ope-3333a590"><FontAwesomeIcon icon={faLinkedin} className='icon hero_icon' /></a>
                     </div>
                     <div className="hero_introduction">
                         <h2>hello,</h2>

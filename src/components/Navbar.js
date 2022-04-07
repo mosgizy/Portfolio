@@ -6,8 +6,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 const Navbar = () => {
     const hamburger = useRef(null)
     const themes = useRef(null)
+
     const [navHeight,setNavHeight] = useState(0)
-    const [theme,setTheme] = useState(false)
+    const [theme, setTheme] = useState(false)
+    const [active,setActive] = useState(true)
+    
+    const navContent = ['home', 'about', 'projects', 'contact'];
 
     const toggleClick = () => {
         hamburger.current.classList.toggle("show-nav-content")
@@ -17,6 +21,8 @@ const Navbar = () => {
         } else {
             hamburger.current.style.height = 0 + "px";
         }
+
+        setActive(false)
     }
 
     window.addEventListener('resize', () => {
@@ -27,14 +33,15 @@ const Navbar = () => {
 
     // change page theme
 
-    const darkTheme = () => {
-        document.body.classList.add("dark-theme")
-        setTheme(true)
-    }
-
-    const brightTheme = () => {
-        document.body.classList.remove("dark-theme")
-        setTheme(false)
+    const pageTheme = (themeColor) => {
+        if (themeColor === "dark-theme") {
+            document.body.classList.add("dark-theme")
+            setTheme(true)    
+        }
+        if (themeColor !== "dark-theme"){
+            document.body.classList.remove("dark-theme")
+            setTheme(false)        
+        }
     }
 
     useEffect(() => {
@@ -47,15 +54,15 @@ const Navbar = () => {
         <header className='main-header'>
             <nav className='main-nav'>
                 <div className="logo">
-                    <a href="#">Moshood => Asterisk</a>
+                    <a href="#home">Moshood => Asterisk</a>
                 </div>
                 <div className="navigation">
                     <div className="nav-mobile">
                         <div className="dark-bright" ref={themes}>
-                            <div className={`icon dark ${!theme ? 'show': 'hide'}`} onClick={(e) => darkTheme(e)}>
+                            <div className={`icon dark ${!theme ? 'show': 'hide'}`} onClick={() => pageTheme("dark-theme")}>
                                 <FontAwesomeIcon icon={faMoon} />
                             </div>
-                            <div className={`icon bright ${theme ? 'show' : 'hide'}`} onClick={(e) => brightTheme(e)}>
+                            <div className={`icon bright ${theme ? 'show' : 'hide'}`} onClick={() => pageTheme("light-theme")}>
                                 <FontAwesomeIcon icon={faSun} />
                             </div>
                         </div>
@@ -64,15 +71,20 @@ const Navbar = () => {
                 </div>
                 <div className="nav-content" ref={hamburger}>
                     <ul>
-                        <li><a href="#home" onClick={toggleClick}>home</a></li>
-                        <li><a href="#about" onClick={toggleClick}>about</a></li>
-                        <li><a href="#projects" onClick={toggleClick}>projects</a></li>
-                        <li><a href="#contact" onClick={toggleClick}>contact</a></li>
+                        {
+                            navContent.map((nav, index) => {
+                                return <NavLink key={index} value={nav} func={toggleClick} active={active} />
+                            })
+                        }
                     </ul>
                 </div>
             </nav>
         </header>
     )
+}
+
+const NavLink = ({ value, func,active }) => {
+    return <li><a href={`#${value}`} onClick={func} className={active ? "nav-color" : ""}>{value}</a></li>
 }
 
 export default Navbar
