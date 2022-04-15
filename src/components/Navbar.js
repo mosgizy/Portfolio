@@ -35,7 +35,7 @@ const Navbar = () => {
         }
     }
 
-    window.addEventListener("scroll", (e) => {
+    window.addEventListener("scroll", () => {
         for (let page in pages) {
             if (Math.ceil(window.scrollY >= pages[page])) {
                 setActive(page)
