@@ -35,6 +35,14 @@ const Navbar = () => {
         }
     }
 
+    window.addEventListener("scroll", (e) => {
+        for (let page in pages) {
+            if (Math.ceil(window.scrollY >= pages[page])) {
+                setActive(page)
+            }
+        }
+    })
+
     window.addEventListener('resize', () => {
         if (window.innerWidth > 786) {
             hamburger.current.style.height = 0;
