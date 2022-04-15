@@ -1,19 +1,43 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
-// import avartar from '../assets/avartar.jpg'
 import { useGlobalContext } from '../context'
 
 const Hero = () => {
-    const {avatar} = useGlobalContext();
+    const { avatar, dispatch } = useGlobalContext();
+
+    const hero = useRef(null)
+
+    const scrollDown = () => {
+        window.scrollTo(0,1128-82)
+    }
+
+    React.useEffect(() => {
+        if (window.innerWidth > 768) {
+            dispatch({
+                type: "PAGE_UPDATE", payload: {
+                    home: hero.current.offsetTop - 122
+                }
+            })
+        }
+        else {
+            dispatch({
+                type: "PAGE_UPDATE", payload: {
+                    home: hero.current.offsetTop - 82
+                }
+            })
+        }
+
+    }, [])
+
     return (
-        <section className='hero' id='home'>
+        <section className='hero' ref={hero}>
             <article className="hero_wrapper">
                 <article className='hero_info'>
                     <div className="hero_social-icons">
-                        <a href="https://twitter.com/asterisk_me"><FontAwesomeIcon icon={faTwitter} className='icon hero_icon' /></a>
-                        <a href="https://github.com/mosgizy"><FontAwesomeIcon icon={faGithub} className='icon hero_icon' /></a>
-                        <a href="https://linkedin.com/in/moshood-ope-3333a590"><FontAwesomeIcon icon={faLinkedin} className='icon hero_icon' /></a>
+                        <a href="https://twitter.com/asterisk_me" aria-label='twitter icon'><FontAwesomeIcon icon={faTwitter} className='icon hero_icon' /></a>
+                        <a href="https://github.com/mosgizy" aria-label='github icon'><FontAwesomeIcon icon={faGithub} className='icon hero_icon' /></a>
+                        <a href="https://linkedin.com/in/moshood-ope-3333a590" aria-label='linkedin icon'><FontAwesomeIcon icon={faLinkedin} className='icon hero_icon' /></a>
                     </div>
                     <div className="hero_introduction">
                         <h2>hello,</h2>
@@ -28,7 +52,7 @@ const Hero = () => {
                     </div>
                 </article>
             </article>
-            <a href='#about' className="hero_down">
+            <button className="hero_down" onClick={scrollDown} aria-label="scroll down">
                 <div className="hero_down_scroller">
                     <div className="hero_down_button"></div>
                 </div>
@@ -37,7 +61,7 @@ const Hero = () => {
                     <span></span>
                     <span></span>
                 </div>
-            </a>
+            </button>
         </section>
     )
 }

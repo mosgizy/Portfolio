@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { useGlobalContext } from '../context'
 
 const Contact = () => {
+    const {dispatch} = useGlobalContext()
+    const contact = useRef(null)
+
+    React.useEffect(() => {
+        setTimeout(() => {
+            if (window.innerWidth > 768) {
+                dispatch({
+                    type: "PAGE_UPDATE", payload: {
+                        contact: contact.current.offsetTop - 122
+                    }
+                })
+            }
+            else {
+                dispatch({
+                    type: "PAGE_UPDATE", payload: {
+                        contact: contact.current.offsetTop - 82
+                    }
+                })
+            }
+        },2000)
+    },[])
+
     return (
-        <section id="contact">
+        <section id="contact" ref={contact}>
             <div className="sub-section">
                 <div className="contact">
                     <h1 className='section-header'>get in touch</h1>

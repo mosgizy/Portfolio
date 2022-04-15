@@ -1,61 +1,67 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useGlobalContext } from '../context'
+import ProjectCard from './ProjectCard'
 
 const Project = () => {
-    const { projects } = useGlobalContext()
+    const { projects, dispatch } = useGlobalContext()
     const [project, setProject] = useState([])
+    const [active,setActive] = useState("all")
+    const pro = useRef(null)
+
+    const projectNav = ["all", "landing page", "javascript", "react"]
 
     const handleClick = (tech) => {
         if (tech === 'all') {
             setProject([...projects])
+            setActive(tech)
         } else {
             const newProjects = projects.filter(project => project.category === tech)
             setProject([...newProjects])
+            setActive(tech)
         }
     }
-    
+
     useEffect(() => {
         setProject([...projects])
-    },[projects])
+        setTimeout(() => {
+            if (window.innerWidth > 768) {
+                dispatch({
+                    type: "PAGE_UPDATE", payload: {
+                        projects: pro.current.offsetTop - 122
+                    }
+                })
+            }
+            else {
+                dispatch({
+                    type: "PAGE_UPDATE", payload: {
+                        projects: pro.current.offsetTop - 82
+                    }
+                })
+            }
+        }, 2000)
+    }, [projects])
 
     return (
-        <section id="projects">
+        <section id="projects" ref={pro}>
             <div className="sub-section">
                 <h1 className='section-header'>projects</h1>
                 <nav className='project-navbar'>
-                    <button type='button' className='project-btn' onClick={() => handleClick("all")}>all</button>
-                    <button type='button' className='project-btn' onClick={() => handleClick("landing page")}>landing pages</button>
-                    <button type='button' className='project-btn' onClick={() => handleClick("javascript")}>javascript</button>
-                    <button type='button' className='project-btn' onClick={() => handleClick("react")}>react</button>
+                    {
+                        projectNav.map((link,index) => {
+                            return <button type='button' key={index} className={`project-btn ${active === link ? "project-navlink": ""}`} onClick={() => handleClick(link)}>{link}</button>
+                        })
+                    }
                 </nav>
 
                 <article className='projects-wrapper'>
                     {
-                       projects && project.map((project) => {
-                            return <ProjectCard key={project.id} {...project}  />
+                        projects && project.map((project) => {
+                            return <ProjectCard key={project.id} {...project} />
                         })
                     }
                 </article>
             </div>
         </section>
-    )
-}
-
-const ProjectCard = ({img,title,description,source,demo}) => {
-    return (
-        <div className="project">
-            <div className="project-preview">
-                <img src={img} alt={title} />
-            </div>
-            <div className="project_info">
-                <h3 className="project_title">{ title}</h3>
-                <p className="project_about">{description}</p>
-                <div className="project_btn">
-                    <a href={source}>source code</a>
-                    <a href={demo}>Demo</a>
-                </div>
-            </div>
-        </div>
     )
 }
 

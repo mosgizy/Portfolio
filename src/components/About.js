@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGlobalContext } from '../context'
 
 const About = () => {
-    const { avatar } = useGlobalContext();
+    const { avatar, dispatch } = useGlobalContext();
+    const about = useRef(null)
+
+    useEffect(() => {
+        if (window.innerWidth > 768) {
+            dispatch({
+                type: "PAGE_UPDATE", payload: {
+                    about: about.current.offsetTop - 122
+                }
+            })
+        }
+        else {
+            dispatch({
+                type: "PAGE_UPDATE", payload: {
+                    about: about.current.offsetTop - 82
+                }
+            })
+        }
+
+    }, [])
 
     return (
-        <section id="about">
+        <section ref={about}>
             <div className='sub-section sub-about'>
                 <h1 className='section-header'>about</h1>
                 <div className="about-content">
@@ -18,7 +37,7 @@ const About = () => {
                             <p>I create interactive and responsive websites and web apps on a daily basis in order me grow and learn a ton of new stuff as a developer my github kind of scream that. My current tech stack in HTML, CSS, JavaScript and React. </p>
                             <p>My interest in the future is to sharpen my skills and learn about new tools that can help me build more robust and user friendly web pages, i do have keen interest in Open Source, Linux and Backend Development</p>
                         </div>
-                        <button type='button' className='btn about-btn'><a href='https://resume.io/r/CuTCTfdXh'>download cv</a></button>
+                        <a href='https://resume.io/r/CuTCTfdXh' className='btn about-btn'>download cv</a>
                     </article>
                 </div>
             </div>

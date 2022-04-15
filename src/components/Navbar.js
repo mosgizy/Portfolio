@@ -2,27 +2,37 @@ import React, { useRef, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { useGlobalContext } from '../context'
 
 const Navbar = () => {
     const hamburger = useRef(null)
     const themes = useRef(null)
+    const nav = useRef(null)
 
     const [navHeight,setNavHeight] = useState(0)
     const [theme, setTheme] = useState(false)
-    const [active,setActive] = useState(true)
+    const [active, setActive] = useState("home")
+    
+    const { pages } = useGlobalContext()
     
     const navContent = ['home', 'about', 'projects', 'contact'];
 
-    const toggleClick = () => {
+    const toggleClick = (e) => {
         hamburger.current.classList.toggle("show-nav-content")
         if (hamburger.current.classList.contains("show-nav-content")) {
             hamburger.current.style.height = navHeight + "px";
-            console.log(navHeight)
         } else {
             hamburger.current.style.height = 0 + "px";
         }
 
-        setActive(false)
+        let hold = e.target.innerHTML
+        
+        for (let page in pages) {
+            if (page === hold) {
+                window.scrollTo(0, pages[page])
+                setActive(hold)
+            }
+        }
     }
 
     window.addEventListener('resize', () => {
@@ -48,13 +58,15 @@ const Navbar = () => {
         let tempHeight = hamburger.current.getBoundingClientRect().height;
         hamburger.current.style.height = 0;
         setNavHeight(tempHeight)
+
+        window.scrollTo(0, -82)
     }, [])
 
     return (
-        <header className='main-header'>
+        <header className='main-header' ref={nav}>
             <nav className='main-nav'>
                 <div className="logo">
-                    <a href="#home">Moshood => Asterisk</a>
+                    Moshood => Asterisk
                 </div>
                 <div className="navigation">
                     <div className="nav-mobile">
@@ -83,8 +95,8 @@ const Navbar = () => {
     )
 }
 
-const NavLink = ({ value, func,active }) => {
-    return <li><a href={`#${value}`} onClick={func} className={active ? "nav-color" : ""}>{value}</a></li>
+const NavLink = ({ value, func, active }) => {
+    return <li onClick={func} className={`nav-link ${active === value ? "nav-color" : ""}`}>{value}</li>
 }
 
 export default Navbar
