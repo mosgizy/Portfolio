@@ -42,7 +42,7 @@ const Project = () => {
     }, [projects])
 
     return (
-        <section id="projects" ref={pro}>
+        <section ref={pro}>
             <div className="sub-section">
                 <h1 className='section-header'>projects</h1>
                 <nav className='project-navbar'>

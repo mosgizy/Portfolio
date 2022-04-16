@@ -40,9 +40,13 @@ const Context = ({ children }) => {
     const [data, dispatch] = useReducer(reducer, defaultValue);
 
     const getProjects = async () => {
-        const data = await fetch(url);
-        const response = await data.json();
-        return response
+        try {
+            const data = await fetch(url);
+            const response = await data.json();
+            return response
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     useEffect(() => {

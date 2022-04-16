@@ -4,12 +4,21 @@ import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-ic
 import { useGlobalContext } from '../context'
 
 const Hero = () => {
-    const { avatar, dispatch } = useGlobalContext();
+    const { avatar, dispatch,pages } = useGlobalContext();
 
     const hero = useRef(null)
 
     const scrollDown = () => {
         window.scrollTo(0,1128-82)
+    }
+
+    const scrollToProject = () => {
+        if (window.innerWidth > 768) {
+            window.scrollTo(0, pages.projects)
+        } else {
+            window.scrollTo(0, pages.projects )
+        }
+        console.log(pages.projects)
     }
 
     React.useEffect(() => {
@@ -43,7 +52,7 @@ const Hero = () => {
                         <h2>hello,</h2>
                         <h2>i'm <span className="hero_name">moshood ope</span></h2>
                         <p>i'm a frontend developer based in Nigeria</p>
-                        <a href='#projects' type='button' className='hero_btn btn'>view my work</a>
+                        <button type='button' className='hero_btn btn' onClick={scrollToProject}>view my work</button>
                     </div>
                 </article>
                 <article className='my-avatar'>
