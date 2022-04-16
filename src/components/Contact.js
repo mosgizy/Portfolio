@@ -11,7 +11,6 @@ const Contact = () => {
                 updatePage({ contact: contact.current.offsetTop - 122})
             } else {
                 updatePage({ contact: contact.current.offsetTop - 82 })
-                console.log("hey")
             }
         },2000)
     },[])
