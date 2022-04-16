@@ -3,7 +3,7 @@ import { useGlobalContext } from '../context'
 import ProjectCard from './ProjectCard'
 
 const Project = () => {
-    const { projects, dispatch } = useGlobalContext()
+    const { projects, updatePage } = useGlobalContext()
     const [project, setProject] = useState([])
     const [active,setActive] = useState("all")
     const pro = useRef(null)
@@ -25,18 +25,9 @@ const Project = () => {
         setProject([...projects])
         setTimeout(() => {
             if (window.innerWidth > 768) {
-                dispatch({
-                    type: "PAGE_UPDATE", payload: {
-                        projects: pro.current.offsetTop - 122
-                    }
-                })
-            }
-            else {
-                dispatch({
-                    type: "PAGE_UPDATE", payload: {
-                        projects: pro.current.offsetTop - 82
-                    }
-                })
+                updatePage({ projects: pro.current.offsetTop -122})
+            } else {
+                updatePage({ projects: pro.current.offsetTop - 82})
             }
         }, 2000)
     }, [projects])

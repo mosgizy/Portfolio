@@ -2,24 +2,16 @@ import React, { useRef } from 'react'
 import { useGlobalContext } from '../context'
 
 const Contact = () => {
-    const {dispatch} = useGlobalContext()
+    const {updatePage} = useGlobalContext()
     const contact = useRef(null)
 
     React.useEffect(() => {
         setTimeout(() => {
             if (window.innerWidth > 768) {
-                dispatch({
-                    type: "PAGE_UPDATE", payload: {
-                        contact: contact.current.offsetTop - 122
-                    }
-                })
-            }
-            else {
-                dispatch({
-                    type: "PAGE_UPDATE", payload: {
-                        contact: contact.current.offsetTop - 82
-                    }
-                })
+                updatePage({ contact: contact.current.offsetTop - 122})
+            } else {
+                updatePage({ contact: contact.current.offsetTop - 82 })
+                console.log("hey")
             }
         },2000)
     },[])

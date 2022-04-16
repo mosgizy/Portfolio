@@ -1,42 +1,27 @@
-import React, { useRef } from 'react'
+import React, { useRef,useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { useGlobalContext } from '../context'
 
 const Hero = () => {
-    const { avatar, dispatch,pages } = useGlobalContext();
+    const { avatar, updatePage,pages } = useGlobalContext();
 
     const hero = useRef(null)
 
-    const scrollDown = () => {
-        window.scrollTo(0,1128-82)
-    }
-
-    const scrollToProject = () => {
+    const scrollToSection = (section) => {
         if (window.innerWidth > 768) {
-            window.scrollTo(0, pages.projects)
+            window.scrollTo(0, section)
         } else {
-            window.scrollTo(0, pages.projects )
+            window.scrollTo(0, section)
         }
-        console.log(pages.projects)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (window.innerWidth > 768) {
-            dispatch({
-                type: "PAGE_UPDATE", payload: {
-                    home: hero.current.offsetTop - 122
-                }
-            })
+            updatePage({ home: hero.current.offsetTop - 122})
+        } else {
+            updatePage({ home: hero.current.offsetTop - 82})
         }
-        else {
-            dispatch({
-                type: "PAGE_UPDATE", payload: {
-                    home: hero.current.offsetTop - 82
-                }
-            })
-        }
-
     }, [])
 
     return (
@@ -52,7 +37,7 @@ const Hero = () => {
                         <h2>hello,</h2>
                         <h2>i'm <span className="hero_name">moshood ope</span></h2>
                         <p>i'm a frontend developer based in Nigeria</p>
-                        <button type='button' className='hero_btn btn' onClick={scrollToProject}>view my work</button>
+                        <button type='button' className='hero_btn btn' onClick={() => scrollToSection(pages.projects)}>view my work</button>
                     </div>
                 </article>
                 <article className='my-avatar'>
@@ -61,7 +46,7 @@ const Hero = () => {
                     </div>
                 </article>
             </article>
-            <button className="hero_down" onClick={scrollDown} aria-label="scroll down">
+            <button className="hero_down" onClick={() => scrollToSection(1128)} aria-label="scroll down">
                 <div className="hero_down_scroller">
                     <div className="hero_down_button"></div>
                 </div>

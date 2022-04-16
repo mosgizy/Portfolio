@@ -49,6 +49,23 @@ const Context = ({ children }) => {
         }
     }
 
+    const updatePage = (top) => {
+        if (window.innerWidth > 768) {
+            dispatch({
+                type: "PAGE_UPDATE", payload: {
+                    ...top
+                }
+            })
+        }
+        else {
+            dispatch({
+                type: "PAGE_UPDATE", payload: {
+                    ...top
+                }
+            })
+        }
+    }
+
     useEffect(() => {
         getProjects().then((res) => {
             dispatch({ type: "SET", payload: { ...res } })
@@ -57,7 +74,7 @@ const Context = ({ children }) => {
     }, [])
 
     return (
-        <AppContext.Provider value={{ ...data,navH:data.pages.navH, dispatch }}>
+        <AppContext.Provider value={{ ...data, updatePage }}>
             {children}
         </AppContext.Provider>
     )
