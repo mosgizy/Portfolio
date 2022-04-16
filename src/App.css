@@ -179,15 +179,13 @@ h4 {
 
 .nav-content {
     position: absolute;
-    top: 4.8rem;
+    top: 5.1rem;
     left: 0;
     background-color: var(--bg-color);
     width: var(--section-width);
     overflow-y: hidden;
     transition: all var(--transition);
 }
-
-.show-nav-content {}
 
 .nav-content>ul {
     display: flex;

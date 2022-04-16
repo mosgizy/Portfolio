@@ -46,7 +46,7 @@ const Hero = () => {
                     </div>
                 </article>
             </article>
-            <button className="hero_down" onClick={() => scrollToSection(1128)} aria-label="scroll down">
+            <button type='button' className="hero_down" onClick={() => scrollToSection(1128)} aria-label="scroll down">
                 <div className="hero_down_scroller">
                     <div className="hero_down_button"></div>
                 </div>
