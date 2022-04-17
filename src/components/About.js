@@ -23,7 +23,7 @@ const About = () => {
                     </article>
                     <article className="about-me">
                         <div className="about-me_text">
-                            <p>I am a frontend developer, I love to solve problems whether it's finding the most elegant way to write lines of code or figuring out which code fits best into progression.I am committed to learning and self-development to achieve better results. I am always open to learning and constructive feedback.</p>
+                            <p>I am a frontend developer, I love to solve problems whether it's finding the most elegant way to write lines of code or figuring out which code fits best into progression. I am committed to learning and self-development to achieve better results. I am always open to learning and constructive feedback.</p>
                             <p>I create interactive and responsive websites and web apps on a daily basis in order me grow and learn a ton of new stuff as a developer my github kind of scream that. My current tech stack in HTML, CSS, JavaScript and React. </p>
                             <p>My interest in the future is to sharpen my skills and learn about new tools that can help me build more robust and user friendly web pages, i do have keen interest in Open Source, Linux and Backend Development</p>
                         </div>

@@ -644,6 +644,11 @@ h4 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: var(--transition);
+}
+
+.project-preview > img:hover{
+    transform: scale(1.03);
 }
 
 .project_info {
@@ -809,4 +814,9 @@ footer {
     font-size: var(--medium-font);
     text-align: center;
     text-transform: capitalize;
+}
+
+.copyright .email {
+    margin-block-end: 1rem;
+    text-transform: none;
 }

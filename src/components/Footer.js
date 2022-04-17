@@ -18,6 +18,7 @@ const Footer = () => {
                 </ul>
             </div>
             <div className="copyright">
+                <p className="email">moshood521@gmail.com</p>
                 <p>copyright © <span className='date'>{ new Date().getFullYear()}</span></p>
             </div>
         </footer>

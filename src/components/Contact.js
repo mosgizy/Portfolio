@@ -1,4 +1,6 @@
 import React, { useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import {}
 import { useGlobalContext } from '../context'
 
 const Contact = () => {
@@ -19,7 +21,7 @@ const Contact = () => {
         <section id="contact" ref={contact}>
             <div className="sub-section">
                 <div className="contact">
-                    <h1 className='section-header'>get in touch</h1>
+                    <h1 className='section-header'>contact us</h1>
                     <p>Got a question or proposal, or just want to say hello? Go ahead</p>
 
                     <article>
