@@ -24,11 +24,7 @@ const Project = () => {
     useEffect(() => {
         setProject([...projects])
         setTimeout(() => {
-            if (window.innerWidth > 768) {
-                updatePage({ projects: pro.current.offsetTop -122})
-            } else {
-                updatePage({ projects: pro.current.offsetTop - 82})
-            }
+            window.innerWidth > 768 ? updatePage({ projects: pro.current.offsetTop - 122 }) : updatePage({ projects: pro.current.offsetTop - 82 })
         }, 2000)
     }, [projects])
 

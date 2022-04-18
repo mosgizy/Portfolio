@@ -6,11 +6,7 @@ const About = () => {
     const about = useRef(null)
 
     useEffect(() => {
-        if (window.innerWidth > 768) {
-            updatePage({ about: about.current.offsetTop - 122})
-        } else {
-            updatePage({ about: about.current.offsetTop - 82})
-        }
+        window.innerWidth > 768 ? updatePage({ about: about.current.offsetTop - 122 }) : updatePage({ about: about.current.offsetTop - 82 })
     }, [])
 
     return (

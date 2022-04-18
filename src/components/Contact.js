@@ -1,6 +1,4 @@
 import React, { useRef } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import {}
 import { useGlobalContext } from '../context'
 
 const Contact = () => {
@@ -9,11 +7,7 @@ const Contact = () => {
 
     React.useEffect(() => {
         setTimeout(() => {
-            if (window.innerWidth > 768) {
-                updatePage({ contact: contact.current.offsetTop - 122})
-            } else {
-                updatePage({ contact: contact.current.offsetTop - 82 })
-            }
+            window.innerWidth > 768 ? updatePage({ contact: contact.current.offsetTop - 122 }) : updatePage({ contact: contact.current.offsetTop - 82 })
         },2000)
     },[])
 

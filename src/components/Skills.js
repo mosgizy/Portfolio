@@ -1,5 +1,6 @@
 import { useGlobalContext } from '../context'
-import React,{useRef} from 'react'
+import React, { useRef } from 'react'
+import Skill from './Skill'
 
 const Skills = () => {
     const { skills } = useGlobalContext()
@@ -21,12 +22,6 @@ const Skills = () => {
                 </ul>
             </div>
         </section>
-    )
-}
-
-const Skill = ({ skill }) => {
-    return (
-        <li><img src={skill[1]} alt={skill[0]} /></li>
     )
 }
 

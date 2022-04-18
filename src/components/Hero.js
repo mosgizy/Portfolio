@@ -9,19 +9,11 @@ const Hero = () => {
     const hero = useRef(null)
 
     const scrollToSection = (section) => {
-        if (window.innerWidth > 768) {
-            window.scrollTo(0, section)
-        } else {
-            window.scrollTo(0, section)
-        }
+        window.innerWidth > 768 ? window.scrollTo(0, section) : window.scrollTo(0, section)
     }
 
     useEffect(() => {
-        if (window.innerWidth > 768) {
-            updatePage({ home: hero.current.offsetTop - 122})
-        } else {
-            updatePage({ home: hero.current.offsetTop - 82})
-        }
+        window.innerWidth > 768 ? updatePage({ home: hero.current.offsetTop - 122 }) : updatePage({ home: hero.current.offsetTop - 82 })
     }, [])
 
     return (
@@ -46,7 +38,7 @@ const Hero = () => {
                     </div>
                 </article>
             </article>
-            <button type='button' className="hero_down" onClick={() => scrollToSection(1128-82)} aria-label="scroll down">
+            <button type='button' className="hero_down" onClick={() => scrollToSection(pages.about + 30)} aria-label="scroll down">
                 <div className="hero_down_scroller">
                     <div className="hero_down_button"></div>
                 </div>

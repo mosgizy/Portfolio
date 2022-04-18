@@ -19,27 +19,19 @@ const Navbar = () => {
 
     const toggleClick = (e) => {
         hamburger.current.classList.toggle("show-nav-content")
-        if (hamburger.current.classList.contains("show-nav-content")) {
-            hamburger.current.style.height = navHeight + "px";
-        } else {
-            hamburger.current.style.height = 0 + "px";
-        }
+        hamburger.current.classList.contains("show-nav-content") ? hamburger.current.style.height = navHeight + "px" : hamburger.current.style.height = 0 + "px"
 
         let hold = e.target.innerHTML
         
         for (let page in pages) {
-            if (page === hold) {
-                window.scrollTo(0, pages[page])
-                setActive(hold)
-            }
+            (page === hold) && window.scrollTo(0, pages[page])
+            setActive(hold)
         }
     }
 
     window.addEventListener("scroll", () => {
         for (let page in pages) {
-            if (Math.ceil(window.scrollY >= pages[page])) {
-                setActive(page)
-            }
+            (Math.ceil(window.scrollY >= pages[page])) && setActive(page)
         }
     })
 
