@@ -803,6 +803,12 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: var(--transition);
+}
+
+.footer_content ul li:hover{
+    background-color: white;
+    color:var(--bg-color);
 }
 
 .copyright {
