@@ -1,5 +1,7 @@
 #visit live site [here](https://hasterisk.netlify.app/)
 
+install fontawesome icons follow this article from [fatima](https://fatima-ola.hashnode.dev/how-to-use-font-awesome-6-with-react)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

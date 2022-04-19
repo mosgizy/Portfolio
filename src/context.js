@@ -1,10 +1,11 @@
 import React, { useReducer, useEffect, useContext } from 'react'
+import * as actions from './actionTypes'
 
 const AppContext = React.createContext();
 const url = "https://my-json-server.typicode.com/mosgizy/Portfolio-Api/db"
 
 const reducer = (state, action) => {
-    if (action.type === 'SET') {
+    if (action.type === actions.SET_DATA) {
         return {
             ...state,
             projects: [...action.payload.projects],
@@ -13,14 +14,14 @@ const reducer = (state, action) => {
         }
     }
 
-    if (action.type === "PAGE_UPDATE") {
+    if (action.type === actions.PAGE_UPDATED) {
         return {
             ...state,
             pages: { ...state.pages, ...action.payload }
         }
     }
 
-    if (action.type === "LOAD_STOP") {
+    if (action.type === actions.STOP_LOADER) {
         return {
             ...state,
             loader:true,
@@ -52,26 +53,17 @@ const Context = ({ children }) => {
     }
 
     const updatePage = (top) => {
-        if (window.innerWidth > 768) {
-            dispatch({
-                type: "PAGE_UPDATE", payload: {
-                    ...top
-                }
-            })
-        }
-        else {
-            dispatch({
-                type: "PAGE_UPDATE", payload: {
-                    ...top
-                }
-            })
-        }
+        dispatch({
+            type: actions.PAGE_UPDATED, payload: {
+                ...top
+            }
+        })
     }
 
     useEffect(() => {
         getProjects().then((res) => {
-            dispatch({ type: "SET", payload: { ...res } })
-            dispatch({ type: "LOAD_STOP", payload: false })
+            dispatch({ type: actions.SET_DATA, payload: { ...res } })
+            dispatch({ type: actions.STOP_LOADER, payload: false })
         })
     }, [])
 
