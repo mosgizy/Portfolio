@@ -26,6 +26,8 @@ const reducer = (state, action) => {
             loader:true,
         }
     }
+
+    return state
 }
 
 const defaultValue = {
