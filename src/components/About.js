@@ -15,7 +15,7 @@ const About = () => {
                 <h1 className='section-header'>about</h1>
                 <div className="about-content">
                     <article className="my-image">
-                        <img src={avatar.image} alt="my avartar" />
+                        <img loading='lazy' src={avatar.image} alt="my avartar" />
                     </article>
                     <article className="about-me">
                         <div className="about-me_text">

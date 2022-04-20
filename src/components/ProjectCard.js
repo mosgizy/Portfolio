@@ -4,7 +4,7 @@ const ProjectCard = ({ img, title, description, source, demo }) => {
     return (
         <div className="project">
             <div className="project-preview">
-                <img src={img} alt={title} />
+                <img loading='lazy' src={img} alt={title} />
             </div>
             <div className="project_info">
                 <h2 className="project_title">{title}</h2>
