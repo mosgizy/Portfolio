@@ -40,7 +40,7 @@
     --mainbg-color: #000e14;
     --primary-text-color: #fff;
     --navlink-color: #fff;
-    --secondary-text-color: #008bc4;
+    --secondary-text-color: #6cf750;
     --card-color: #001c27;
     --card-color-inverted: #fff;
     --card-btn-color: #000e14;
@@ -199,16 +199,11 @@ h4 {
 
 .nav-content ul li{
     transition: color .35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    color:var(--secondary-text-color);
     cursor: pointer;
 }
 
 .nav-content ul li:hover{
     color: var(--navlink-color)
-}
-
-.nav-color {
-    color: var(--navlink-color) !important;
 }
 
 @media only screen and (min-width: 768px) {
