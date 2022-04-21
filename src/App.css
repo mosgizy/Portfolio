@@ -197,9 +197,8 @@ h4 {
     padding-block: 2rem;
 }
 
-.nav-content ul li{
+.nav-link{
     transition: color .35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* color:var(--secondary-text-color); */
     cursor: pointer;
 }
 
