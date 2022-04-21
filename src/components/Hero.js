@@ -34,7 +34,7 @@ const Hero = () => {
                 </article>
                 <article className='my-avatar'>
                     <div className="hero_my-avatar">
-                        <img loading='lazy' src={avatar.image} alt="my avatar" />
+                        <img src={avatar.image} alt="my avatar" />
                     </div>
                 </article>
             </article>
