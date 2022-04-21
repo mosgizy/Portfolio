@@ -48,7 +48,7 @@ const Navbar = () => {
             document.body.classList.add("dark-theme")
             setTheme(true)    
         }
-        if (themeColor !== "dark-theme"){
+        if (themeColor === "light-theme"){
             document.body.classList.remove("dark-theme")
             setTheme(false)        
         }
