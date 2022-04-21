@@ -10,7 +10,7 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faArrowUp} />
             </button>
             <div className="footer_content">
-                <h3>back to top</h3>
+                <p>back to top</p>
                 <ul>
                     <li><a href="https://twitter.com/asterisk_me" aria-label='twitter icon'><FontAwesomeIcon icon={faTwitter} /></a></li>
                     <li><a href="https://github.com/mosgizy" aria-label='github icon'><FontAwesomeIcon icon={faGithub} /></a></li>

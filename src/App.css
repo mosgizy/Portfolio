@@ -780,7 +780,7 @@ footer {
     text-align: center;
 }
 
-.footer_content h3 {
+.footer_content p {
     text-transform: uppercase;
     color: white;
     font-size: var(--base-font);
