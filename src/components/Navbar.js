@@ -17,31 +17,40 @@ const Navbar = () => {
     
     const navContent = ['home', 'about', 'projects', 'contact'];
 
+    // toggleClick handles all the nav button clicks, both hamburger and the nav buttons, this function might later be split into two because is a good practice for a function to perform just a single task
+
     const toggleClick = (e) => {
+        // this show and hide the nav menu while dynamicly changing its height to allow the animation with css work fine
+
         hamburger.current.classList.toggle("show-nav-content")
         hamburger.current.classList.contains("show-nav-content") ? hamburger.current.style.height = navHeight + "px" : hamburger.current.style.height = 0 + "px"
+
+        // this is for nav button on a desktop, onclick will scroll to the section top got from the stored data on pages in context.js
 
         let hold = e.target.innerHTML
         
         for (let page in pages) {
+            // checking if the text in the button is the same as that of the key in pages to map each button to there specific section on the page
             (page === hold) && window.scrollTo(0, pages[page])
             setActive(hold)
         }
     }
 
     window.addEventListener("scroll", () => {
+        // this indicate the section which the user scroll at on the nav button changing the collor of the active button based on the section the user is scrolling
         for (let page in pages) {
-            (Math.ceil(window.scrollY >= pages[page])) && setActive(page)
+            Math.ceil(window.scrollY >= pages[page]) && setActive(page)
         }
     })
 
     window.addEventListener('resize', () => {
+        // this auto hide the nav menu when user decide to resize the web page manually,making the height of the nav menu 0
         if (window.innerWidth > 786) {
             hamburger.current.style.height = 0;
         }
     })
 
-    // change page theme
+    // change theme of the webpage directly adding class to the document body
 
     const pageTheme = (themeColor) => {
         if (themeColor === "dark-theme") {
@@ -55,10 +64,13 @@ const Navbar = () => {
     }
 
     useEffect(() => {
+        // get the size of the nav menu and resize it to zero to be able to dynamically toggle the nav menu when the user click on the hamburger
+
         let tempHeight = hamburger.current.getBoundingClientRect().height;
         hamburger.current.style.height = 0;
         setNavHeight(tempHeight)
 
+        // this automatically scroll to the top on page refresh
         window.scrollTo(0, -82)
     }, [])
 
