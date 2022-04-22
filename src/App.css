@@ -202,12 +202,9 @@ h4 {
     cursor: pointer;
 }
 
-.nav-content ul li:hover{
+.nav-content ul li:hover,
+.nav-color{
     color: var(--navlink-color)
-}
-
-.nav-color {
-    color: inherit;
 }
 
 @media only screen and (min-width: 768px) {

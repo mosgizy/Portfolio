@@ -11,7 +11,7 @@ const About = () => {
 
     return (
         <section ref={about}>
-            <div className='sub-section sub-about'>
+            <article className='sub-section sub-about'>
                 <h1 className='section-header'>about</h1>
                 <div className="about-content">
                     <article className="my-image">
@@ -26,7 +26,7 @@ const About = () => {
                         <a href='https://resume.io/r/CuTCTfdXh' download="CV.pdf" className='btn about-btn'>download cv</a>
                     </article>
                 </div>
-            </div>
+            </article>
         </section>
     )
 }

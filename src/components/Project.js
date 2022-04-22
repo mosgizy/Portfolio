@@ -30,7 +30,7 @@ const Project = () => {
 
     return (
         <section ref={pro}>
-            <div className="sub-section">
+            <article className="sub-section">
                 <h1 className='section-header'>projects</h1>
                 <nav className='project-navbar'>
                     {
@@ -47,7 +47,7 @@ const Project = () => {
                         })
                     }
                 </article>
-            </div>
+            </article>
         </section>
     )
 }

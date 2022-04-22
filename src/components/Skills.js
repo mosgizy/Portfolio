@@ -10,7 +10,7 @@ const Skills = () => {
 
     return (
         <section className='skill-set' ref={skill}>
-            <div className='sub-section'>
+            <article className='sub-section'>
                 <h1 className='section-header'>skills</h1>
 
                 <ul className="skills">
@@ -20,7 +20,7 @@ const Skills = () => {
                         })
                     }
                 </ul>
-            </div>
+            </article>
         </section>
     )
 }
