@@ -16,7 +16,7 @@ const Hero = () => {
 
     useEffect(() => {
         // this update the pages array in context.js
-        
+
         window.innerWidth > 768 ? updatePage({ home: hero.current.offsetTop - 122 }) : updatePage({ home: hero.current.offsetTop - 82 })
     }, [])
 

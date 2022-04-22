@@ -25,7 +25,7 @@ const Project = () => {
         setProject([...projects])
         setTimeout(() => {
             window.innerWidth > 768 ? updatePage({ projects: pro.current.offsetTop - 122 }) : updatePage({ projects: pro.current.offsetTop - 82 })
-        }, 2000)
+        }, 4000)
     }, [projects])
 
     return (
