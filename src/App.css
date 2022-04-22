@@ -270,6 +270,11 @@ h4 {
 
 .hero_icon {
     color: var(--secondary-color-inverted);
+    transition:var(--transition);
+}
+
+.hero_icon:hover{
+    box-shadow: 0 0 15px var(--secondary-color-inverted);
 }
 
 .hero_introduction {

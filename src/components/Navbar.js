@@ -77,7 +77,7 @@ const Navbar = () => {
     return (
         <header className='main-header' ref={nav}>
             <nav className='main-nav'>
-                <div className="logo">
+                <div className="logo" onClick={() => window.scrollTo(0,0)}>
                     Moshood => Asterisk
                 </div>
                 <div className="navigation">
