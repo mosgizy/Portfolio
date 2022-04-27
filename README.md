@@ -5,8 +5,13 @@ install fontawesome icons follow this article from [fatima](https://fatima-ola.h
 using [emailjs](emailjs.com) to let visitor send email directly to me from the contact form
 
 npm i emailjs
+### Issue faced
 
-learn something new today i was handling scrolling using eventlistener on the window object and getting the height of each section then onclick i will scroll to the top based on if its a mobile or desktop, i just found out that i can use scrollIntoView method this really save me a tone because i really remove alot of codes from my code based, i might have literarilly not have looked for an easier way to do this before because i want to implement it myself but i realize that a lots of re-rendering was going on, it was not making rendering slow though but i know that using scrollIntoView will make it more faster
+my own scrolling function calculate the height of the section and i get the top of the section on load and use a scroll event to scroll to each section on click, the problem with this is that all the content of the page need to be loaded to get the proper height of the section which means immediately else the height of the section will not be correct after the content fully load on the page, which will cause the scrolling to only stop at the top which was calculated and not the present top after all the content have been loaded
+
+### solution applied
+
+learn something new today i was handling scrolling using eventlistener on the window object and getting the height of each section then onclick i will scroll to the top based on if its a mobile or desktop, i just found out that i can use scrollIntoView method this really save me a tone because i really remove alot of codes from my code based, i might have literarilly not have looked for an easier way to do this before because i want to implement it myself but i realize that a lots of re-rendering was going on, it was not making rendering slow though but i know that using scrollIntoView will make it more faster.
 
 i was able to apply the scroll effect and create an indication on the navbar links in which section the user is currently at, it was kind of tricky for me but i found my way around it 
 
