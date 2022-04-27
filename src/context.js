@@ -35,7 +35,6 @@ const defaultValue = {
     projects: [],
     skills: {},
     avatar: {},
-    pages: { home: 0, about: 0, projects: 0, contact: 0 },
     loader:false,
 }
 
@@ -52,13 +51,25 @@ const Context = ({ children }) => {
         }
     }
 
-    const updatePage = (top) => {
-        dispatch({
-            type: actions.PAGE_UPDATED, payload: {
-                ...top
-            }
-        })
+    const scroll = (id) => {
+        const view = document.getElementById(id)
+        if (view) {
+            view.scrollIntoView({behavior:'smooth'})
+        }
     }
+
+    const checkScroll = (id) => {
+        const view = document.getElementById(id);
+        if (view) {
+            const rect = view.getBoundingClientRect();
+            // console.log(rect.top,window.innerHeight,rect.bottom)
+            // console.log(rect)
+            return (
+                rect.top <= 120 &&
+                rect.bottom >= 0
+            );
+        }
+    };
 
     useEffect(() => {
         getProjects().then((res) => {
@@ -68,7 +79,7 @@ const Context = ({ children }) => {
     }, [])
 
     return (
-        <AppContext.Provider value={{ ...data, updatePage }}>
+        <AppContext.Provider value={{ ...data,scroll,checkScroll }}>
             {children}
         </AppContext.Provider>
     )

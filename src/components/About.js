@@ -2,15 +2,15 @@ import React, { useEffect, useRef } from 'react'
 import { useGlobalContext } from '../context'
 
 const About = () => {
-    const { avatar, updatePage } = useGlobalContext();
+    const { avatar} = useGlobalContext();
     const about = useRef(null)
 
     useEffect(() => {
-        window.innerWidth > 768 ? updatePage({ about: about.current.offsetTop - 122 }) : updatePage({ about: about.current.offsetTop - 82 })
+        // window.innerWidth > 768 ? updatePage({ about: about.current.offsetTop - 122 }) : updatePage({ about: about.current.offsetTop - 82 })
     }, [])
 
     return (
-        <section ref={about}>
+        <section id='about' ref={about}>
             <article className='sub-section sub-about'>
                 <h1 className='section-header'>about</h1>
                 <div className="about-content">

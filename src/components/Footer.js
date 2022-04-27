@@ -3,10 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
+import { useGlobalContext } from '../context'
+
 const Footer = () => {
+    const {scroll} = useGlobalContext()
+
     return (
         <footer>
-            <button type="button" aria-label="back to top" className="to-top" onClick={() => window.scrollTo(0,-82)}>
+            <button type="button" aria-label="back to top" className="to-top" onClick={() => scroll("home")}>
                 <FontAwesomeIcon icon={faArrowUp} />
             </button>
             <div className="footer_content">

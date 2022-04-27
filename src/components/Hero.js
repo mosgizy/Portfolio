@@ -4,24 +4,18 @@ import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-ic
 import { useGlobalContext } from '../context'
 
 const Hero = () => {
-    const { avatar, updatePage,pages } = useGlobalContext();
+    const { avatar,scroll } = useGlobalContext();
 
     const hero = useRef(null)
-
-    // this scroll to about section from the hero page
-
-    const scrollToSection = (section) => {
-        window.scrollTo(0, section)
-    }
 
     useEffect(() => {
         // this update the pages array in context.js
 
-        window.innerWidth > 768 ? updatePage({ home: hero.current.offsetTop - 122 }) : updatePage({ home: hero.current.offsetTop - 82 })
+        // window.innerWidth > 768 ? updatePage({ home: hero.current.offsetTop - 122 }) : updatePage({ home: hero.current.offsetTop - 82 })
     }, [])
 
     return (
-        <section className='hero' ref={hero}>
+        <section id='home' className='hero' ref={hero}>
             <article className="hero_wrapper">
                 <article className='hero_info'>
                     <div className="hero_social-icons">
@@ -33,7 +27,7 @@ const Hero = () => {
                         <h2>hello,</h2>
                         <h2>i'm <span className="hero_name">moshood ope</span></h2>
                         <p>i'm a frontend developer based in Nigeria</p>
-                        <button type='button' className='hero_btn btn' onClick={() => scrollToSection(pages.projects)}>view my work</button>
+                        <button type='button' className='hero_btn btn' onClick={() => scroll("projects")}>view my work</button>
                     </div>
                 </article>
                 <article className='my-avatar'>
@@ -42,7 +36,7 @@ const Hero = () => {
                     </div>
                 </article>
             </article>
-            <button type='button' className="hero_down" onClick={() => scrollToSection(pages.about)} aria-label="scroll down">
+            <button type='button' className="hero_down" onClick={() => scroll("about")} aria-label="scroll down">
                 <div className="hero_down_scroller">
                     <div className="hero_down_button"></div>
                 </div>

@@ -4,6 +4,8 @@ import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { useGlobalContext } from '../context'
 
+import NavLink from './NavLink'
+
 const Navbar = () => {
     const hamburger = useRef(null)
     const themes = useRef(null)
@@ -13,9 +15,10 @@ const Navbar = () => {
     const [theme, setTheme] = useState(false)
     const [active, setActive] = useState("home")
     
-    const { pages } = useGlobalContext()
+    const { scroll,checkScroll } = useGlobalContext()
     
     const navContent = ['home', 'about', 'projects', 'contact'];
+    // console.log("this is navbar")
 
     // toggleClick handles all the nav button clicks, both hamburger and the nav buttons, this function might later be split into two because is a good practice for a function to perform just a single task
 
@@ -24,23 +27,18 @@ const Navbar = () => {
 
         hamburger.current.classList.toggle("show-nav-content")
         hamburger.current.classList.contains("show-nav-content") ? hamburger.current.style.height = navHeight + "px" : hamburger.current.style.height = 0 + "px"
-
-        // this is for nav button on a desktop, onclick will scroll to the section top got from the stored data on pages in context.js
-
-        let hold = e.target.innerHTML
-        
-        for (let page in pages) {
-            // checking if the text in the button is the same as that of the key in pages to map each button to there specific section on the page
-            (page === hold) && window.scrollTo(0, pages[page])
-            setActive(hold)
-        }
     }
 
-    window.addEventListener("scroll", () => {
-        // this indicate the section which the user scroll at on the nav button changing the collor of the active button based on the section the user is scrolling
-        for (let page in pages) {
-            Math.ceil(window.scrollY >= pages[page]) && setActive(page)
-        }
+    // when users click on the nav buttons it navigate the user to the section with a smooth scroll effect and also highlighting on the nav bar in which section the user is
+
+    const handleClick = (value) => {
+        scroll(value)
+        setActive(value)
+    }
+
+    // this highlight on the nav bar in which section the user is while scrolling through the page
+    window.addEventListener('scroll', () => {
+        navContent.map((nav) => checkScroll(nav) && setActive(nav))
     })
 
     window.addEventListener('resize', () => {
@@ -77,7 +75,7 @@ const Navbar = () => {
     return (
         <header className='main-header' ref={nav}>
             <nav className='main-nav'>
-                <div className="logo" onClick={() => window.scrollTo(0,0)}>
+                <div className="logo" onClick={() => scroll("home")}>
                     Moshood => Asterisk
                 </div>
                 <div className="navigation">
@@ -97,7 +95,7 @@ const Navbar = () => {
                     <ul>
                         {
                             navContent.map((nav, index) => {
-                                return <NavLink key={index} value={nav} func={toggleClick} active={active} />
+                                return <NavLink key={index} active={active} handleClick={handleClick} value={nav} scroll={scroll} />
                             })
                         }
                     </ul>
@@ -105,10 +103,6 @@ const Navbar = () => {
             </nav>
         </header>
     )
-}
-
-const NavLink = ({ value, func, active }) => {
-    return <li onClick={func} className={`nav-link ${active === value ? "nav-color" : ""}`}>{value}</li>
 }
 
 export default Navbar

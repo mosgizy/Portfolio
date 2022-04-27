@@ -3,8 +3,8 @@ import { useGlobalContext } from '../context'
 import ProjectCard from './ProjectCard'
 
 const Project = () => {
-    const { projects, updatePage } = useGlobalContext()
-    const [project, setProject] = useState([])
+    const { projects } = useGlobalContext()
+    const [project, setProject] = useState([...projects])
     const [active,setActive] = useState("all")
     const pro = useRef(null)
 
@@ -23,13 +23,10 @@ const Project = () => {
 
     useEffect(() => {
         setProject([...projects])
-        setTimeout(() => {
-            window.innerWidth > 768 ? updatePage({ projects: pro.current.offsetTop - 122 }) : updatePage({ projects: pro.current.offsetTop - 82 })
-        }, 4000)
     }, [projects])
 
     return (
-        <section ref={pro}>
+        <section id='projects' ref={pro}>
             <article className="sub-section">
                 <h1 className='section-header'>projects</h1>
                 <nav className='project-navbar'>
@@ -42,7 +39,7 @@ const Project = () => {
 
                 <article className='projects-wrapper'>
                     {
-                        projects && project.map((project) => {
+                        project.map((project) => {
                             return <ProjectCard key={project.id} {...project} />
                         })
                     }
