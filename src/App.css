@@ -734,6 +734,7 @@ h4 {
 textarea {
     outline: none;
     margin-block: .5rem 1rem;
+    color:var(--primary-text-color);
     padding: .65rem 1rem;
     border-radius: .5rem;
     background-color: transparent;

@@ -5,13 +5,6 @@ const Contact = () => {
     const contact = useRef(null)
     const form = useRef(null)
 
-    // const [input, setInput] = useState({
-    //     name: "",
-    //     email: "",
-    //     subject: "",
-    //     message:""
-    // })
-
     const sendEmail = (e) => {
         e.preventDefault()
         emailjs.sendForm('default_service','hasterisk',form.current, 'TZARVgU4FQxaMRICf').then(
