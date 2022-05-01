@@ -725,7 +725,7 @@ h4 {
         box-shadow: inset 2px 3px 15px rgba(0, 0, 0, .2);
     }
 
-    .contact p {
+    .contact > p {
         margin-block-end: 2rem;
     }
 }
@@ -751,6 +751,10 @@ textarea {
 textarea {
     resize: none;
     height: 12rem;
+}
+
+.error{
+    text-transform: capitalize;
 }
 
 /* footer style */
