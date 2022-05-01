@@ -34,6 +34,7 @@ const Navbar = () => {
     const handleClick = (value) => {
         scroll(value)
         setActive(value)
+        hamburger.current.style.height = 0;
     }
 
     // this highlight on the nav bar in which section the user is while scrolling through the page
