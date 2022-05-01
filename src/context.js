@@ -10,7 +10,8 @@ const reducer = (state, action) => {
             ...state,
             projects: [...action.payload.projects],
             skills: { ...action.payload.skills },
-            avatar: { ...action.payload.avatar }
+            avatar: { ...action.payload.avatar },
+            api_key:{...action.payload.api_key}
         }
     }
 
@@ -35,7 +36,8 @@ const defaultValue = {
     projects: [],
     skills: {},
     avatar: {},
-    loader:false,
+    loader: false,
+    api_key:{}
 }
 
 const Context = ({ children }) => {

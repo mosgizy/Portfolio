@@ -1,5 +1,6 @@
 import React, { useRef,useState,useEffect } from 'react'
 import emailjs from '@emailjs/browser'
+import { useGlobalContext } from '../context'
 
 const Contact = () => {
     const contact = useRef(null)
@@ -8,11 +9,13 @@ const Contact = () => {
     const [email, setEmail] = useState("")
     const [subject, setSubject] = useState("")
     const [message, setMessage] = useState("")
-    const [error,setError] = useState(false)
+    const [error, setError] = useState(false)
+    
+    const { api_key } = useGlobalContext()
 
     const sendEmail = (e) => {
         e.preventDefault()
-        emailjs.sendForm('default_service', 'hasterisk', form.current,process.env.REACT_APP_EMAILJS_API_KEY).then(
+        emailjs.sendForm('default_service', 'hasterisk', form.current,api_key.emailjs).then(
             (result) => {
                 if (result.text === "OK") {
                     setName("")
@@ -21,7 +24,6 @@ const Contact = () => {
                     setMessage("")
                     setError(true)
                 }
-                console.log(result.text)
             }, (error) => {
                 console.log(error.text)
                 setError(false)
@@ -32,7 +34,7 @@ const Contact = () => {
     useEffect(() => {
         setTimeout(() => {
             setError(false)
-        },1200)
+        },1000)
     },[error])
 
     return (
@@ -43,7 +45,7 @@ const Contact = () => {
                     <p>Got a question or proposal, or just want to say hello? Go ahead</p>
                     <article>
                         <form ref={form} onSubmit={sendEmail} className="form">
-                            <p className={`error`}>
+                            <p className="error">
                                 {
                                     error && "message successfully sent"
                                 }
