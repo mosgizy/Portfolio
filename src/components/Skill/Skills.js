@@ -1,4 +1,4 @@
-import { useGlobalContext } from '../context'
+import { useGlobalContext } from '../../context'
 import React, { useRef } from 'react'
 import Skill from './Skill'
 

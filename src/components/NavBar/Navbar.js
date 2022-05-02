@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { useGlobalContext } from '../context'
+import { useGlobalContext } from '../../context'
 
 import NavLink from './NavLink'
 

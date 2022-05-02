@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
-import { useGlobalContext } from '../context'
+import { useGlobalContext } from '../../context'
 
 const Footer = () => {
     const {scroll} = useGlobalContext()

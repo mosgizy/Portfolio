@@ -1,6 +1,6 @@
 import React, { useRef,useState,useEffect } from 'react'
 import emailjs from '@emailjs/browser'
-import { useGlobalContext } from '../context'
+import { useGlobalContext } from '../../context'
 
 const Contact = () => {
     const contact = useRef(null)

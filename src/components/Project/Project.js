@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useGlobalContext } from '../context'
+import { useGlobalContext } from '../../context'
 import ProjectCard from './ProjectCard'
 
 const Project = () => {

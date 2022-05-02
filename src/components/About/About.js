@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { useGlobalContext } from '../context'
+import { useGlobalContext } from '../../context'
 
 const About = () => {
     const { avatar} = useGlobalContext();

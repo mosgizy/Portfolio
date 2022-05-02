@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { useGlobalContext } from '../context'
+import { useGlobalContext } from '../../context'
 
 const Hero = () => {
     const { avatar,scroll } = useGlobalContext();
