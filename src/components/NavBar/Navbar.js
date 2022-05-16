@@ -22,7 +22,7 @@ const Navbar = () => {
 
     // toggleClick handles all the nav button clicks, both hamburger and the nav buttons, this function might later be split into two because is a good practice for a function to perform just a single task
 
-    const toggleClick = (e) => {
+    const toggleClick = () => {
         // this show and hide the nav menu while dynamicly changing its height to allow the animation with css work fine
 
         hamburger.current.classList.toggle("show-nav-content")

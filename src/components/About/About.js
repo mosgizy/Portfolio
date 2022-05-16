@@ -1,13 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { useGlobalContext } from '../../context'
 
 const About = () => {
     const { avatar} = useGlobalContext();
     const about = useRef(null)
-
-    useEffect(() => {
-        // window.innerWidth > 768 ? updatePage({ about: about.current.offsetTop - 122 }) : updatePage({ about: about.current.offsetTop - 82 })
-    }, [])
 
     return (
         <section id='about' ref={about}>
@@ -23,7 +19,7 @@ const About = () => {
                             <p>I create interactive and responsive websites and web apps on a daily basis in order me grow and learn a ton of new stuff as a developer my github kind of scream that. My current tech stack in HTML, CSS, JavaScript and React. </p>
                             <p>My interest in the future is to sharpen my skills and learn about new tools that can help me build more robust and user friendly web pages, i do have keen interest in Open Source, Linux and Backend Development</p>
                         </div>
-                        <a href='https://resume.io/r/CuTCTfdXh' target="_blank" rel='noreferrer' download="CV.pdf" className='btn about-btn'>download cv</a>
+                        <a href='https://github.com/mosgizy/Portfolio-Api/raw/main/assets/Moshood.pdf' className='btn about-btn'>download cv</a>
                     </article>
                 </div>
             </article>
